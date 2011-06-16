@@ -7,8 +7,25 @@ function roots_admin_init() {
 	$home_url = home_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
 	
-	//wp_register_script('roots_codemirror', "$home_url/wp-content/themes/roots/inc/js/codemirror/codemirror.js");
-	//wp_enqueue_script('roots_codemirror');
+	// Initialize our custom quicktags and wordcount file if codemirror is enabled
+	wp_deregister_script('word-count');
+	wp_deregister_script('quicktags');
+	wp_register_script('quicktags', "$home_url/wp-content/themes/$theme_name/includes/js/roots-quicktags.js");
+	wp_register_script('word-count', "$home_url/wp-content/themes/$theme_name/includes/js/roots-word-count.js");
+	
+			
+	// Codemirror registration
+	wp_register_script('roots_codemirror', "$home_url/wp-content/themes/$theme_name/includes/js/codemirror/codemirror.js");
+	wp_register_script('roots_codemirror_xml', "$home_url/wp-content/themes/$theme_name/includes/js/codemirror/xml/xml.js");
+	wp_register_style('roots_codemirror_css', "$home_url/wp-content/themes/$theme_name/includes/js/codemirror/codemirror.css");
+	wp_register_style('roots_codemirror_xml_css', "$home_url/wp-content/themes/$theme_name/includes/js/codemirror/xml/xml.css");
+	 
+	wp_enqueue_script('roots_admin_js'); // right now this only has codemirror code in it, We'll have to refactor if anything else is added
+	wp_enqueue_script('roots_codemirror');
+	wp_enqueue_script('roots_codemirror_xml');
+	wp_enqueue_style('roots_codemirror_css');
+	wp_enqueue_style('roots_codemirror_xml_css');
+	
 
 	wp_register_style('roots_admin_css', "$home_url/wp-content/themes/$theme_name/inc/css/admin.css");
 	wp_enqueue_style('roots_admin_css');
