@@ -19,12 +19,14 @@ function roots_admin_init() {
 	wp_register_script('roots_codemirror_xml', "$home_url/wp-content/themes/$theme_name/inc/js/codemirror/xml/xml.js");
 	wp_register_style('roots_codemirror_css', "$home_url/wp-content/themes/$theme_name/inc/js/codemirror/codemirror.css");
 	wp_register_style('roots_codemirror_xml_css', "$home_url/wp-content/themes/$theme_name/inc/js/codemirror/xml/xml.css");
+	wp_register_style('roots_codemirror_theme_default_css', "$home_url/wp-content/themes/$theme_name/inc/js/codemirror/theme/default.css");
 	 
 	wp_enqueue_script('roots_admin_js'); // right now this only has codemirror code in it, We'll have to refactor if anything else is added
 	wp_enqueue_script('roots_codemirror');
 	wp_enqueue_script('roots_codemirror_xml');
 	wp_enqueue_style('roots_codemirror_css');
 	wp_enqueue_style('roots_codemirror_xml_css');
+	wp_enqueue_style('roots_codemirror_theme_default_css');
 	
 
 	wp_register_style('roots_admin_css', "$home_url/wp-content/themes/$theme_name/inc/css/admin.css");
